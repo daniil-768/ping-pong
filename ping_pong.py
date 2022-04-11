@@ -40,7 +40,17 @@ class Player(GameSprite):
         if keys[K_RIGHT] and self.rect.y < 660: 
             self.rect.y += self.speed 
 
+class Player2(GameSprite): 
+    def update(self): 
+        keys = key.get_pressed() 
+        if keys[1] and self.rect.y > 0: 
+            self.rect.y -= self.speed 
+        if keys[2] and self.rect.y < 660: 
+            self.rect.y += self.speed 
+
 player2 = Player(img_player, 100, 335, 70, 360, 5)
+player1 = Player2(img_player, 1800, 335, 70, 360, 5)
+
 
 finish = False
 run = True
@@ -53,8 +63,10 @@ while run:
         window.blit(background,(0,0))
         
         player2.update()
+        player1.update()
 
         player2.reset()
+        player1.reset()
 
         display.update()
 time.delay(50)
